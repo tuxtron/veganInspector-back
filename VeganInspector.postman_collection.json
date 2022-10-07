@@ -1,0 +1,861 @@
+{
+	"info": {
+		"_postman_id": "b6b5c9b6-cd0b-4bfa-804e-5b1b04ec8227",
+		"name": "VeganInspector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Producto",
+			"item": [
+				{
+					"name": "Producto POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"prueba2\",\n    \"brand\": \"prueba1\",\n    \"barcode\": 11111,\n    \"imagePackage\": \"url\",\n    \"ingredients\": [],\n    \"comments\": [],\n    \"category\": \"prueba1\",\n    \"observations\": \"prueba1\",\n    \"imageIngredients\": \"prueba1\",\n    \"imageBarcode\": \"prueba1\",\n    \"verified\": true,\n    \"reports\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto GET ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"product",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"product",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"prueba2\",\n    \"brand\": \"prueba1\",\n    \"barcode\": 11111,\n    \"imagePackage\": \"url\",\n    \"ingredients\": [],\n    \"comments\": [],\n    \"category\": \"prueba1\",\n    \"observations\": \"prueba1\",\n    \"imageIngredients\": \"prueba1\",\n    \"imageBarcode\": \"prueba1\",\n    \"verified\": true,\n    \"reports\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.comdev/product/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"comdev"
+							],
+							"path": [
+								"product",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto POST (VARIOS)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n    \"name\": \"prueba1\",\n    \"brand\": \"prueba1\",\n    \"barcode\": 11111,\n    \"imagePackage\": \"url\",\n    \"ingredients\": [],\n    \"comments\": [],\n    \"category\": \"prueba1\",\n    \"observations\": \"prueba1\",\n    \"imageIngredients\": \"prueba1\",\n    \"imageBarcode\": \"prueba1\",\n    \"verified\": true,\n    \"reports\": []\n},\n{\n    \"name\": \"prueba2\",\n    \"brand\": \"prueba2\",\n    \"barcode\": 11111,\n    \"imagePackage\": \"url\",\n    \"ingredients\": [],\n    \"comments\": [],\n    \"category\": \"prueba1\",\n    \"observations\": \"prueba1\",\n    \"imageIngredients\": \"prueba1\",\n    \"imageBarcode\": \"prueba1\",\n    \"verified\": true,\n    \"reports\": []\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reportar Producto",
+			"item": [
+				{
+					"name": "Reportar Producto POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "report:{\n    {\n        \"userId\": \"1111\",\n        \"observations\" : \"no es lo que dice?\",\n        \"verified\": true\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/reportProduct/6326175e9bbb6da533fd1d44",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"reportProduct",
+								"6326175e9bbb6da533fd1d44"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reportar Producto PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idReport\": \"63265df9edf327137e6c7482\",\n    \"verified\": true\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/reportProduct/632616669bbb6da533fd1d42",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"reportProduct",
+								"632616669bbb6da533fd1d42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reportar Producto DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"63279df8aa83a7dd5425701d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/reportProduct/6326175e9bbb6da533fd1d44",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"reportProduct",
+								"6326175e9bbb6da533fd1d44"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingrediente",
+			"item": [
+				{
+					"name": "Ingredient POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"prueba2\",\n    \"apt_vegan\": false,\n    \"apt_vegetarian\": true,\n    \"verified\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/ingredient",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"ingredient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingredient GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/ingredient",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"ingredient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingredient GET ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/ingredient/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"ingredient",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingredient PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"prueba2\",\n    \"apt_vegan\": false,\n    \"apt_vegetarian\": true,\n    \"verified\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/ingredient/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"ingredient",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingredient DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/ingredient/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"ingredient",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingredient POST (VARIOS)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n    \"name\": \"prueba2\",\n    \"apt_vegan\": false,\n    \"apt_vegetarian\": true,\n    \"verified\": false\n},\n{\n    \"name\": \"prueba1\",\n    \"apt_vegan\": false,\n    \"apt_vegetarian\": true,\n    \"verified\": false\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/ingredient",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"ingredient"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"prueba\",\n  \"lastName\": \"apellido\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.comdev/user",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"comdev"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentario",
+			"item": [
+				{
+					"name": "Comment POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creationDate\" : \"2022-01-1\",\n    \"message\" : \"un comentario\",\n    \"amountLike\" : \"2\",\n    \"idProduct\" : \"111111\", \n    \"idUser\" : \"11111\",\n    \"report\" : []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://5n7tw6pdp2.execute-api.us-east-1.amazonaws.com/dev/comment",
+							"protocol": "https",
+							"host": [
+								"5n7tw6pdp2",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://5n7tw6pdp2.execute-api.us-east-1.amazonaws.com/dev/comment",
+							"protocol": "https",
+							"host": [
+								"5n7tw6pdp2",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment GET ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://5n7tw6pdp2.execute-api.us-east-1.amazonaws.com/dev/comment/{id}",
+							"protocol": "https",
+							"host": [
+								"5n7tw6pdp2",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"comment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://5n7tw6pdp2.execute-api.us-east-1.amazonaws.com/dev/comment/{id}",
+							"protocol": "https",
+							"host": [
+								"5n7tw6pdp2",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"comment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creationDate\" : \"2022-01-1\",\n    \"message\" : \"un comentario\",\n    \"amountLike\" : \"1\",\n    \"idProduct\" : \"111111\", \n    \"idUser\" : \"11111\",\n    \"report\" : []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://5n7tw6pdp2.execute-api.us-east-1.amazonaws.com/dev/comment/{id}",
+							"protocol": "https",
+							"host": [
+								"5n7tw6pdp2",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"comment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment POST (VARIOS)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n    \"creationDate\" : \"2022-01-1\",\n    \"message\" : \"un comentario\",\n    \"amountLike\" : \"1\",\n    \"idProduct\" : \"111111\", \n    \"idUser\" : \"11111\",\n    \"report\" : []\n},\n{\n    \"creationDate\" : \"2022-01-1\",\n    \"message\" : \"un comentario2\",\n    \"amountLike\" : \"0\",\n    \"idProduct\" : \"2222222\", \n    \"idUser\" : \"222222\",\n    \"report\" : [1]\n}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/comment",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IncreaseComment PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/increaseComment/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"increaseComment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decreaseComment PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/decreaseComment/632bc238c0642e753fea3e2d",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"decreaseComment",
+								"632bc238c0642e753fea3e2d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reportar Comentario",
+			"item": [
+				{
+					"name": "Reportar Comentario POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUser\": \"1221212\",\n    \"verified\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/reportComment/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"reportComment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reportar Comentario PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"63279eabaa83a7dd54257026\",\n    \"verified\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/reportComment/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"reportComment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reportar Comentario DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"63279df8aa83a7dd5425701d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/reportComment/{id}",
+							"protocol": "https",
+							"host": [
+								"h9n2mu7v05",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"reportComment",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
