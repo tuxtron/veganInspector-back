@@ -1,0 +1,213 @@
+org: unknownchimpanzee
+console: true
+service: veganInspector
+
+provider:
+  name: aws
+  runtime: nodejs16.x 
+  memorySize: 128 
+  timeout: 10 
+  stage: dev 
+  region: us-east-1
+
+functions: 
+  createUser:
+    handler: handler.createUser # point to exported create function in handler.js
+    events:
+      - http:
+          path: user 
+          method: post
+          cors: true
+  getOneUser:
+    handler: handler.getOneUser
+    events:
+      - http:
+          path: user/{id} 
+          method: get
+          cors: true
+  getAllUser:
+    handler: handler.getAllUser
+    events:
+     - http:
+         path: user
+         method: get
+         cors: true
+  updateUser:
+    handler: handler.updateUser
+    events:
+     - http:
+         path: user/{id}
+         method: put
+         cors: true
+  deleteUser:
+    handler: handler.deleteUser
+    events:
+     - http:
+         path: user/{id} 
+         method: delete
+         cors: true
+  createProduct:
+    handler: handler.createProduct # point to exported create function in handler.js
+    events:
+      - http:
+          path: product 
+          method: post
+          cors: true
+  getOneProduct:
+    handler: handler.getOneProduct
+    events:
+      - http:
+          path: product/{id} 
+          method: get
+          cors: true
+  getAllProduct:
+    handler: handler.getAllProduct 
+    events:
+     - http:
+         path: product
+         method: get
+         cors: true
+  updateProduct:
+    handler: handler.updateProduct
+    events:
+     - http:
+         path: product/{id}
+         method: put
+         cors: true
+  deleteProduct:
+    handler: handler.deleteProduct
+    events:
+     - http:
+         path: product/{id} 
+         method: delete
+         cors: true
+  createReportProduct:
+    handler: handler.createReportProduct
+    events:
+     - http:
+         path: reportProduct/{id} 
+         method: post
+         cors: true 
+  deleteReportProduct:
+    handler: handler.deleteReportProduct
+    events:
+     - http:
+         path: reportProduct/{id} 
+         method: delete
+         cors: true 
+  updateReportProduct:
+    handler: handler.updateReportProduct
+    events:
+     - http:
+         path: reportProduct/{id} 
+         method: put
+         cors: true 
+  createIngredient:
+    handler: handler.createIngredient # point to exported create function in handler.js
+    events:
+      - http:
+          path: ingredient 
+          method: post
+          cors: true
+  getOneIngredient:
+    handler: handler.getOneIngredient
+    events:
+      - http:
+          path: ingredient/{id} 
+          method: get
+          cors: true
+  getAllIngredient:
+    handler: handler.getAllIngredient 
+    events:
+     - http:
+         path: ingredient
+         method: get
+         cors: true
+  updateIngredient:
+    handler: handler.updateIngredient
+    events:
+     - http:
+         path: ingredient/{id}
+         method: put
+         cors: true
+  deleteIngredient:
+    handler: handler.deleteIngredient
+    events:
+     - http:
+         path: ingredient/{id} 
+         method: delete
+         cors: true
+  createComment:
+    handler: handler.createComment # point to exported create function in handler.js
+    events:
+      - http:
+          path: comment 
+          method: post
+          cors: true
+  getOneComment:
+    handler: handler.getOneComment
+    events:
+      - http:
+          path: comment/{id} 
+          method: get
+          cors: true
+  getAllComment:
+    handler: handler.getAllComment 
+    events:
+     - http:
+         path: comment
+         method: get
+         cors: true
+  updateComment:
+    handler: handler.updateComment
+    events:
+     - http:
+         path: comment/{id}
+         method: put
+         cors: true
+  deleteComment:
+    handler: handler.deleteComment
+    events:
+     - http:
+         path: comment/{id} 
+         method: delete
+         cors: true
+  increaseComment:
+    handler: handler.increaseComment
+    events:
+     - http:
+         path: increaseComment/{id} 
+         method: put
+         cors: true
+  decreaseComment:
+    handler: handler.decreaseComment
+    events:
+     - http:
+         path: decreaseComment/{id} 
+         method: put
+         cors: true   
+
+  createReportComment:
+    handler: handler.createReportComment
+    events:
+     - http:
+         path: reportComment/{id} 
+         method: post
+         cors: true 
+  deleteReportComment:
+    handler: handler.deleteReportComment
+    events:
+     - http:
+         path: reportComment/{id} 
+         method: delete
+         cors: true 
+  updateReportComment:
+    handler: handler.updateReportComment
+    events:
+     - http:
+         path: reportComment/{id} 
+         method: put
+         cors: true 
+
+plugins:
+- serverless-offline # adding the plugin to be able to run the offline emulation
