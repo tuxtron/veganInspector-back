@@ -113,6 +113,12 @@
         "LogGroupName": "/aws/lambda/veganInspector-dev-getOneProduct"
       }
     },
+    "GetOneProductValueLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/veganInspector-dev-getOneProductValue"
+      }
+    },
     "GetAllProductLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
@@ -323,7 +329,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.createUser",
         "Runtime": "nodejs16.x",
@@ -357,7 +363,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getOneUser",
         "Runtime": "nodejs16.x",
@@ -391,7 +397,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getAllUser",
         "Runtime": "nodejs16.x",
@@ -425,7 +431,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.updateUser",
         "Runtime": "nodejs16.x",
@@ -459,7 +465,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.deleteUser",
         "Runtime": "nodejs16.x",
@@ -493,7 +499,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.createProduct",
         "Runtime": "nodejs16.x",
@@ -527,7 +533,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getOneProduct",
         "Runtime": "nodejs16.x",
@@ -554,6 +560,40 @@
         "GetOneProductLogGroup"
       ]
     },
+    "GetOneProductValueLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
+        },
+        "Handler": "handler.getOneProductValue",
+        "Runtime": "nodejs16.x",
+        "FunctionName": "veganInspector-dev-getOneProductValue",
+        "MemorySize": 128,
+        "Timeout": 10,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_LAMBDA_EXEC_WRAPPER": "/opt/otel-extension-internal-node/exec-wrapper.sh",
+            "SLS_EXTENSION": "{\"ingestToken\":\"920f23a1-982a-41d4-8c90-256064c7b14c\",\"orgId\":\"ed80830f-8021-40c8-8d68-3f3ff7dd1a4c\",\"namespace\":\"veganInspector\",\"environment\":\"dev\"}"
+          }
+        },
+        "Layers": [
+          "arn:aws:lambda:us-east-1:177335420605:layer:sls-otel-extension-node-v0-5-2:1"
+        ]
+      },
+      "DependsOn": [
+        "GetOneProductValueLogGroup"
+      ]
+    },
     "GetAllProductLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -561,7 +601,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getAllProduct",
         "Runtime": "nodejs16.x",
@@ -595,7 +635,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.updateProduct",
         "Runtime": "nodejs16.x",
@@ -629,7 +669,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.deleteProduct",
         "Runtime": "nodejs16.x",
@@ -663,7 +703,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.createReportProduct",
         "Runtime": "nodejs16.x",
@@ -697,7 +737,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.deleteReportProduct",
         "Runtime": "nodejs16.x",
@@ -731,7 +771,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.updateReportProduct",
         "Runtime": "nodejs16.x",
@@ -765,7 +805,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.createIngredient",
         "Runtime": "nodejs16.x",
@@ -799,7 +839,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getOneIngredient",
         "Runtime": "nodejs16.x",
@@ -833,7 +873,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getAllIngredient",
         "Runtime": "nodejs16.x",
@@ -867,7 +907,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.updateIngredient",
         "Runtime": "nodejs16.x",
@@ -901,7 +941,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.deleteIngredient",
         "Runtime": "nodejs16.x",
@@ -935,7 +975,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.createComment",
         "Runtime": "nodejs16.x",
@@ -969,7 +1009,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getOneComment",
         "Runtime": "nodejs16.x",
@@ -1003,7 +1043,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.getAllComment",
         "Runtime": "nodejs16.x",
@@ -1037,7 +1077,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.updateComment",
         "Runtime": "nodejs16.x",
@@ -1071,7 +1111,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.deleteComment",
         "Runtime": "nodejs16.x",
@@ -1105,7 +1145,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.increaseComment",
         "Runtime": "nodejs16.x",
@@ -1139,7 +1179,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.decreaseComment",
         "Runtime": "nodejs16.x",
@@ -1173,7 +1213,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.createReportComment",
         "Runtime": "nodejs16.x",
@@ -1207,7 +1247,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.deleteReportComment",
         "Runtime": "nodejs16.x",
@@ -1241,7 +1281,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/veganInspector/dev/1665181927671-2022-10-07T22:32:07.671Z/veganInspector.zip"
+          "S3Key": "serverless/veganInspector/dev/1665423729543-2022-10-10T17:42:09.543Z/veganInspector.zip"
         },
         "Handler": "handler.updateReportComment",
         "Runtime": "nodejs16.x",
@@ -1268,284 +1308,294 @@
         "UpdateReportCommentLogGroup"
       ]
     },
-    "CreateUserLambdaVersionZAZdTvhYtw5NV8lchONz4sOAt6RTWAaH9uQtPyanB0": {
+    "CreateUserLambdaVersiond6dSHhClZTBlOQws3tknGYggHjZP5hFw52ayXw2Ej4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateUserLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetOneUserLambdaVersionbjYsqzLZovFKn1YsEhGSWsbCTwfGVcxMr3verhnjuo": {
+    "GetOneUserLambdaVersionpUAGvo7hqdKGtJpuBEedpnbKVg3dXkmbQcJIXP0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetOneUserLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetAllUserLambdaVersioncT1VYiOhVm8XtA9uCWuODblzALrYMmqGNvNnwpBYxY4": {
+    "GetAllUserLambdaVersionm7voYJHMCRwSfJCxeIIQvZJsvIMw9Y2nrbgthec1Ob0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAllUserLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "UpdateUserLambdaVersionfzH6kDwzfmWLatDP8KHn77KXdS4FYJVqH9KrcNSocMU": {
+    "UpdateUserLambdaVersionLrSXlUhBayY4tE0VEhUmakfl9xcAI1lKskvyzgLdV4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateUserLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DeleteUserLambdaVersionwdxTWRU47QixlRNwcs5NkHn2PUBXfhyNGPaBEzaQ": {
+    "DeleteUserLambdaVersionWWBNVsRpvg8ttsX21EnVemeRPtYMGNBzAPRM24ZWhmU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteUserLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "CreateProductLambdaVersionzZe0Ae56DzM3z5dfMFZXR4FXbxWrqpGzhE3FioIhI": {
+    "CreateProductLambdaVersion4JnSbAxlCJ10mxImnapvSUtO795ia6mUVIYzC8W7M": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetOneProductLambdaVersion1LJlvF7pFdwoOwazXqbA424xyd4Y3kPz1hDp9KsxwZ4": {
+    "GetOneProductLambdaVersion933J3vGwsMdupQp20x0vL1BwR0uggC9f4jNYmrkgY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetOneProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetAllProductLambdaVersion6a0whl9P6sCgcLdQFvX1jpdSj05pKYqJkyUA9b1vo4": {
+    "GetOneProductValueLambdaVersion5EdZy6iUs5Sbxfh7v2Ye0dBfQ8d8A0k128cmdoCnIk": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetOneProductValueLambdaFunction"
+        },
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
+      }
+    },
+    "GetAllProductLambdaVersion9MeMqfFNK7CB6VYwlpxWK0AsmQBlqkQHWRvK7XkY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAllProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "UpdateProductLambdaVersioniNMQFkaDRkKsZflkrvcTDfMLlZS2qsh6ZNW9xQ": {
+    "UpdateProductLambdaVersionhm6BqNdRaS6OcVKpWdtaMCyt1JXVywdjAIWV1SI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DeleteProductLambdaVersionpQl7yLQ6qFtWNyi5YyflsPI5mEyumMreep11aBnEw": {
+    "DeleteProductLambdaVersionnf6tdgv6DFHSZtDm5ULFhcHwtgfKXQb5EtD2ewUm0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "CreateReportProductLambdaVersionQVr2aagOjXQX7u66IoXnxWTfIlNFjCGqNQtFrEVP5Q": {
+    "CreateReportProductLambdaVersion2tKT2BXp76qS82ycVAJ68zPg5M96Wy8rAGrOBdhK6ho": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateReportProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DeleteReportProductLambdaVersionkzwuQOlnAftU48PrSU9prpZNoR9UuxB32bApSIK4Gtc": {
+    "DeleteReportProductLambdaVersiondYNCoheJ30NIuXnjNL6Nvh4AqrFnPX9y4MiUdv05qU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteReportProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "UpdateReportProductLambdaVersionQizWcyLDiveeYhT06UCPIR3ZxSk0WoykNI4zRIwvtrk": {
+    "UpdateReportProductLambdaVersionc1ab0NLU38Y4bxO19DH8JKlCK4j5UgOYeYz7ZX9fQs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateReportProductLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "CreateIngredientLambdaVersionwOkP3Jpqf5BtwUVsQe3lhT8g6ocDkrMVd9PHEZrkZdU": {
+    "CreateIngredientLambdaVersion93yAbqHh2kMwhrwLoL0PaYKANKx52I8MANNEn8Bst4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateIngredientLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetOneIngredientLambdaVersiongOSD7RTbOaAZNdXOHV2XVtDKvnZWPksBA0FNmNGcwk": {
+    "GetOneIngredientLambdaVersionrjqODpvt2Oq4ltIqmCADT42z3pqxduGLFdvChjb4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetOneIngredientLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetAllIngredientLambdaVersion1fxJxISSNbyPkhp6mkuXeLjbaHR7gu2BTkxaVCtkPU": {
+    "GetAllIngredientLambdaVersionjpTk7LikZRyA7gVH9wNYlyQUUEg5PyLMExGBEvGcaFk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAllIngredientLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "UpdateIngredientLambdaVersionDAjkqrU5moSMwhGYBOdz0jEELvffEPIzMjkQcpQ5PY": {
+    "UpdateIngredientLambdaVersionz4zsFnvbF4xRZw96XlO580JgFjX6CdLUTlq63eVY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateIngredientLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DeleteIngredientLambdaVersionDDrGPuMyBf9yRpXbZRRRcfXyJpGvr92HFBKjCbK9l8": {
+    "DeleteIngredientLambdaVersionEWaM7qX8Tb0VzBlTEO7RglbmzmaifD7CckzGsMARE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteIngredientLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "CreateCommentLambdaVersiongipLLfDfJV4hzMMvBn4ol5jyZCWIuaHjcknGSu0sao": {
+    "CreateCommentLambdaVersioncLcUekkVQOgBZQmaKmUITIu8uTB3vn03gShYPICyKo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetOneCommentLambdaVersionROoIGHfHZQ8fRRjHl7WSRSe5s644ms32fp0qdWIR08": {
+    "GetOneCommentLambdaVersionVpIiYshJd5vkECALgK7VuYAqTmfoikX4BGZBHYpMFY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetOneCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "GetAllCommentLambdaVersion6M8xIorEhh6ea5GUpdxZrpQNI207eVHrqdeUmGW8JQ": {
+    "GetAllCommentLambdaVersionnZvFzvSVHAF7VXsQHmrguhfZJRnluUifBZzW7jZA0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAllCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "UpdateCommentLambdaVersionVwaZv5Szz2sE8avDTDd6PrVFH9CoXFvMJLisDrdtiQ": {
+    "UpdateCommentLambdaVersionmTVnYpyv9wSVONMGeekXpLvGodUFEh9gPASYILfOa8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DeleteCommentLambdaVersion7nhP4biXTJUEPkpontBn4oPyyKWVv63O2tQSSlfCjPI": {
+    "DeleteCommentLambdaVersion1euJNn2jNxsD1WvXoEB40VJb9LZX460jf6WZ9DSqI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "IncreaseCommentLambdaVersionDttBX5WEAgttG9EUP9m0vsFAzUVemBrm155Tc3guw": {
+    "IncreaseCommentLambdaVersionWzDUOnEPQ55YYL2ewp8Z5kalxzOhrSbSlFQZQz1t2M": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "IncreaseCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DecreaseCommentLambdaVersiondhC3dBKWlXdTy0fVRMLS2BzggtqMFlhvfTwn3nIV1hI": {
+    "DecreaseCommentLambdaVersionb42yfZZWwxgYRdIPVAGkCrlBpIsNptvZqpIzxqNoA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DecreaseCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "CreateReportCommentLambdaVersion9IGADDRX79SaQQSpB9FtIMekjfbVsZYQjFyfJyYLpU": {
+    "CreateReportCommentLambdaVersionrjGKbigojTpfdKorp7SodMnDdZ0zkSttaMd62lrt9U": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateReportCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "DeleteReportCommentLambdaVersionp93JCoSzIWLBfqeok4wg0v7zQ1bTt8ghvqihThcnc": {
+    "DeleteReportCommentLambdaVersiong7SCCp85PyBcU1qoMoBPqR64eXNaUCXzeyirFC5kpQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteReportCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
-    "UpdateReportCommentLambdaVersionWzajcMowo3Gz8CeS09kJpPUTc8hceqP79V7RHOWM": {
+    "UpdateReportCommentLambdaVersiongN4ZnficxX3yAmmYwyuQf9YvUncFiHCrKjf3aaEp9UY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateReportCommentLambdaFunction"
         },
-        "CodeSha256": "sBZ5tcsHfIYx9ZUne8resmhh/wY/yihpEHaEEvEZ7Do="
+        "CodeSha256": "gE0sLwY5Yl2jb5PBK4kMQ9ZWgqaWqnie7hN0suTBRKU="
       }
     },
     "ApiGatewayRestApi": {
@@ -1609,6 +1659,21 @@
           "Ref": "ApiGatewayResourceProduct"
         },
         "PathPart": "{id}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceProducts": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "products",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -1877,7 +1942,8 @@
             "ResponseParameters": {
               "method.response.header.Access-Control-Allow-Origin": true,
               "method.response.header.Access-Control-Allow-Headers": true,
-              "method.response.header.Access-Control-Allow-Methods": true
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true
             },
             "ResponseModels": {}
           }
@@ -1895,7 +1961,8 @@
               "ResponseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'",
                 "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
-                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'",
+                "method.response.header.Access-Control-Allow-Credentials": "'true'"
               },
               "ResponseTemplates": {
                 "application/json": ""
@@ -1950,6 +2017,51 @@
         },
         "ResourceId": {
           "Ref": "ApiGatewayResourceProductIdVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodProductsOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceProducts"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -2636,6 +2748,52 @@
       },
       "DependsOn": [
         "GetOneProductLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodProductsGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceProducts"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetOneProductValueLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "GetOneProductValueLambdaPermissionApiGateway"
       ]
     },
     "ApiGatewayMethodProductGet": {
@@ -3604,7 +3762,7 @@
         "UpdateReportCommentLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1665181921784": {
+    "ApiGatewayDeployment1665423721994": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -3617,6 +3775,7 @@
         "ApiGatewayMethodUserIdVarOptions",
         "ApiGatewayMethodProductOptions",
         "ApiGatewayMethodProductIdVarOptions",
+        "ApiGatewayMethodProductsOptions",
         "ApiGatewayMethodReportproductIdVarOptions",
         "ApiGatewayMethodIngredientOptions",
         "ApiGatewayMethodIngredientIdVarOptions",
@@ -3632,6 +3791,7 @@
         "ApiGatewayMethodUserIdVarDelete",
         "ApiGatewayMethodProductPost",
         "ApiGatewayMethodProductIdVarGet",
+        "ApiGatewayMethodProductsGet",
         "ApiGatewayMethodProductGet",
         "ApiGatewayMethodProductIdVarPut",
         "ApiGatewayMethodProductIdVarDelete",
@@ -3883,6 +4043,43 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "GetOneProductLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "GetOneProductValueLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetOneProductValueLambdaFunction",
             "Arn"
           ]
         },
@@ -4704,7 +4901,7 @@
     "CreateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionZAZdTvhYtw5NV8lchONz4sOAt6RTWAaH9uQtPyanB0"
+        "Ref": "CreateUserLambdaVersiond6dSHhClZTBlOQws3tknGYggHjZP5hFw52ayXw2Ej4"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-CreateUserLambdaFunctionQualifiedArn"
@@ -4713,7 +4910,7 @@
     "GetOneUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetOneUserLambdaVersionbjYsqzLZovFKn1YsEhGSWsbCTwfGVcxMr3verhnjuo"
+        "Ref": "GetOneUserLambdaVersionpUAGvo7hqdKGtJpuBEedpnbKVg3dXkmbQcJIXP0"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetOneUserLambdaFunctionQualifiedArn"
@@ -4722,7 +4919,7 @@
     "GetAllUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAllUserLambdaVersioncT1VYiOhVm8XtA9uCWuODblzALrYMmqGNvNnwpBYxY4"
+        "Ref": "GetAllUserLambdaVersionm7voYJHMCRwSfJCxeIIQvZJsvIMw9Y2nrbgthec1Ob0"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetAllUserLambdaFunctionQualifiedArn"
@@ -4731,7 +4928,7 @@
     "UpdateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateUserLambdaVersionfzH6kDwzfmWLatDP8KHn77KXdS4FYJVqH9KrcNSocMU"
+        "Ref": "UpdateUserLambdaVersionLrSXlUhBayY4tE0VEhUmakfl9xcAI1lKskvyzgLdV4"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-UpdateUserLambdaFunctionQualifiedArn"
@@ -4740,7 +4937,7 @@
     "DeleteUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteUserLambdaVersionwdxTWRU47QixlRNwcs5NkHn2PUBXfhyNGPaBEzaQ"
+        "Ref": "DeleteUserLambdaVersionWWBNVsRpvg8ttsX21EnVemeRPtYMGNBzAPRM24ZWhmU"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DeleteUserLambdaFunctionQualifiedArn"
@@ -4749,7 +4946,7 @@
     "CreateProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateProductLambdaVersionzZe0Ae56DzM3z5dfMFZXR4FXbxWrqpGzhE3FioIhI"
+        "Ref": "CreateProductLambdaVersion4JnSbAxlCJ10mxImnapvSUtO795ia6mUVIYzC8W7M"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-CreateProductLambdaFunctionQualifiedArn"
@@ -4758,16 +4955,25 @@
     "GetOneProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetOneProductLambdaVersion1LJlvF7pFdwoOwazXqbA424xyd4Y3kPz1hDp9KsxwZ4"
+        "Ref": "GetOneProductLambdaVersion933J3vGwsMdupQp20x0vL1BwR0uggC9f4jNYmrkgY"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetOneProductLambdaFunctionQualifiedArn"
       }
     },
+    "GetOneProductValueLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetOneProductValueLambdaVersion5EdZy6iUs5Sbxfh7v2Ye0dBfQ8d8A0k128cmdoCnIk"
+      },
+      "Export": {
+        "Name": "sls-veganInspector-dev-GetOneProductValueLambdaFunctionQualifiedArn"
+      }
+    },
     "GetAllProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAllProductLambdaVersion6a0whl9P6sCgcLdQFvX1jpdSj05pKYqJkyUA9b1vo4"
+        "Ref": "GetAllProductLambdaVersion9MeMqfFNK7CB6VYwlpxWK0AsmQBlqkQHWRvK7XkY"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetAllProductLambdaFunctionQualifiedArn"
@@ -4776,7 +4982,7 @@
     "UpdateProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateProductLambdaVersioniNMQFkaDRkKsZflkrvcTDfMLlZS2qsh6ZNW9xQ"
+        "Ref": "UpdateProductLambdaVersionhm6BqNdRaS6OcVKpWdtaMCyt1JXVywdjAIWV1SI"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-UpdateProductLambdaFunctionQualifiedArn"
@@ -4785,7 +4991,7 @@
     "DeleteProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteProductLambdaVersionpQl7yLQ6qFtWNyi5YyflsPI5mEyumMreep11aBnEw"
+        "Ref": "DeleteProductLambdaVersionnf6tdgv6DFHSZtDm5ULFhcHwtgfKXQb5EtD2ewUm0"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DeleteProductLambdaFunctionQualifiedArn"
@@ -4794,7 +5000,7 @@
     "CreateReportProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateReportProductLambdaVersionQVr2aagOjXQX7u66IoXnxWTfIlNFjCGqNQtFrEVP5Q"
+        "Ref": "CreateReportProductLambdaVersion2tKT2BXp76qS82ycVAJ68zPg5M96Wy8rAGrOBdhK6ho"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-CreateReportProductLambdaFunctionQualifiedArn"
@@ -4803,7 +5009,7 @@
     "DeleteReportProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteReportProductLambdaVersionkzwuQOlnAftU48PrSU9prpZNoR9UuxB32bApSIK4Gtc"
+        "Ref": "DeleteReportProductLambdaVersiondYNCoheJ30NIuXnjNL6Nvh4AqrFnPX9y4MiUdv05qU"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DeleteReportProductLambdaFunctionQualifiedArn"
@@ -4812,7 +5018,7 @@
     "UpdateReportProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateReportProductLambdaVersionQizWcyLDiveeYhT06UCPIR3ZxSk0WoykNI4zRIwvtrk"
+        "Ref": "UpdateReportProductLambdaVersionc1ab0NLU38Y4bxO19DH8JKlCK4j5UgOYeYz7ZX9fQs"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-UpdateReportProductLambdaFunctionQualifiedArn"
@@ -4821,7 +5027,7 @@
     "CreateIngredientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateIngredientLambdaVersionwOkP3Jpqf5BtwUVsQe3lhT8g6ocDkrMVd9PHEZrkZdU"
+        "Ref": "CreateIngredientLambdaVersion93yAbqHh2kMwhrwLoL0PaYKANKx52I8MANNEn8Bst4"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-CreateIngredientLambdaFunctionQualifiedArn"
@@ -4830,7 +5036,7 @@
     "GetOneIngredientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetOneIngredientLambdaVersiongOSD7RTbOaAZNdXOHV2XVtDKvnZWPksBA0FNmNGcwk"
+        "Ref": "GetOneIngredientLambdaVersionrjqODpvt2Oq4ltIqmCADT42z3pqxduGLFdvChjb4"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetOneIngredientLambdaFunctionQualifiedArn"
@@ -4839,7 +5045,7 @@
     "GetAllIngredientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAllIngredientLambdaVersion1fxJxISSNbyPkhp6mkuXeLjbaHR7gu2BTkxaVCtkPU"
+        "Ref": "GetAllIngredientLambdaVersionjpTk7LikZRyA7gVH9wNYlyQUUEg5PyLMExGBEvGcaFk"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetAllIngredientLambdaFunctionQualifiedArn"
@@ -4848,7 +5054,7 @@
     "UpdateIngredientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateIngredientLambdaVersionDAjkqrU5moSMwhGYBOdz0jEELvffEPIzMjkQcpQ5PY"
+        "Ref": "UpdateIngredientLambdaVersionz4zsFnvbF4xRZw96XlO580JgFjX6CdLUTlq63eVY"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-UpdateIngredientLambdaFunctionQualifiedArn"
@@ -4857,7 +5063,7 @@
     "DeleteIngredientLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteIngredientLambdaVersionDDrGPuMyBf9yRpXbZRRRcfXyJpGvr92HFBKjCbK9l8"
+        "Ref": "DeleteIngredientLambdaVersionEWaM7qX8Tb0VzBlTEO7RglbmzmaifD7CckzGsMARE"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DeleteIngredientLambdaFunctionQualifiedArn"
@@ -4866,7 +5072,7 @@
     "CreateCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateCommentLambdaVersiongipLLfDfJV4hzMMvBn4ol5jyZCWIuaHjcknGSu0sao"
+        "Ref": "CreateCommentLambdaVersioncLcUekkVQOgBZQmaKmUITIu8uTB3vn03gShYPICyKo"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-CreateCommentLambdaFunctionQualifiedArn"
@@ -4875,7 +5081,7 @@
     "GetOneCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetOneCommentLambdaVersionROoIGHfHZQ8fRRjHl7WSRSe5s644ms32fp0qdWIR08"
+        "Ref": "GetOneCommentLambdaVersionVpIiYshJd5vkECALgK7VuYAqTmfoikX4BGZBHYpMFY"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetOneCommentLambdaFunctionQualifiedArn"
@@ -4884,7 +5090,7 @@
     "GetAllCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAllCommentLambdaVersion6M8xIorEhh6ea5GUpdxZrpQNI207eVHrqdeUmGW8JQ"
+        "Ref": "GetAllCommentLambdaVersionnZvFzvSVHAF7VXsQHmrguhfZJRnluUifBZzW7jZA0"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-GetAllCommentLambdaFunctionQualifiedArn"
@@ -4893,7 +5099,7 @@
     "UpdateCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateCommentLambdaVersionVwaZv5Szz2sE8avDTDd6PrVFH9CoXFvMJLisDrdtiQ"
+        "Ref": "UpdateCommentLambdaVersionmTVnYpyv9wSVONMGeekXpLvGodUFEh9gPASYILfOa8"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-UpdateCommentLambdaFunctionQualifiedArn"
@@ -4902,7 +5108,7 @@
     "DeleteCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteCommentLambdaVersion7nhP4biXTJUEPkpontBn4oPyyKWVv63O2tQSSlfCjPI"
+        "Ref": "DeleteCommentLambdaVersion1euJNn2jNxsD1WvXoEB40VJb9LZX460jf6WZ9DSqI"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DeleteCommentLambdaFunctionQualifiedArn"
@@ -4911,7 +5117,7 @@
     "IncreaseCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "IncreaseCommentLambdaVersionDttBX5WEAgttG9EUP9m0vsFAzUVemBrm155Tc3guw"
+        "Ref": "IncreaseCommentLambdaVersionWzDUOnEPQ55YYL2ewp8Z5kalxzOhrSbSlFQZQz1t2M"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-IncreaseCommentLambdaFunctionQualifiedArn"
@@ -4920,7 +5126,7 @@
     "DecreaseCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DecreaseCommentLambdaVersiondhC3dBKWlXdTy0fVRMLS2BzggtqMFlhvfTwn3nIV1hI"
+        "Ref": "DecreaseCommentLambdaVersionb42yfZZWwxgYRdIPVAGkCrlBpIsNptvZqpIzxqNoA"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DecreaseCommentLambdaFunctionQualifiedArn"
@@ -4929,7 +5135,7 @@
     "CreateReportCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateReportCommentLambdaVersion9IGADDRX79SaQQSpB9FtIMekjfbVsZYQjFyfJyYLpU"
+        "Ref": "CreateReportCommentLambdaVersionrjGKbigojTpfdKorp7SodMnDdZ0zkSttaMd62lrt9U"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-CreateReportCommentLambdaFunctionQualifiedArn"
@@ -4938,7 +5144,7 @@
     "DeleteReportCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteReportCommentLambdaVersionp93JCoSzIWLBfqeok4wg0v7zQ1bTt8ghvqihThcnc"
+        "Ref": "DeleteReportCommentLambdaVersiong7SCCp85PyBcU1qoMoBPqR64eXNaUCXzeyirFC5kpQ"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-DeleteReportCommentLambdaFunctionQualifiedArn"
@@ -4947,7 +5153,7 @@
     "UpdateReportCommentLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateReportCommentLambdaVersionWzajcMowo3Gz8CeS09kJpPUTc8hceqP79V7RHOWM"
+        "Ref": "UpdateReportCommentLambdaVersiongN4ZnficxX3yAmmYwyuQf9YvUncFiHCrKjf3aaEp9UY"
       },
       "Export": {
         "Name": "sls-veganInspector-dev-UpdateReportCommentLambdaFunctionQualifiedArn"

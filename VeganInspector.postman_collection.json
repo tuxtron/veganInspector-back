@@ -46,10 +46,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product",
+							"raw": "https://ty6fnbdobg.execute-api.us-east-1.amazonaws.com/dev/product",
 							"protocol": "https",
 							"host": [
-								"h9n2mu7v05",
+								"ty6fnbdobg",
 								"execute-api",
 								"us-east-1",
 								"amazonaws",
@@ -135,10 +135,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.comdev/product/{id}",
+							"raw": "https://ty6fnbdobg.execute-api.us-east-1.amazonaws.comdev/product/{id}",
 							"protocol": "https",
 							"host": [
-								"h9n2mu7v05",
+								"ty6fnbdobg",
 								"execute-api",
 								"us-east-1",
 								"amazonaws",
@@ -166,6 +166,75 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "https://ty6fnbdobg.execute-api.us-east-1.amazonaws.com/dev/product",
+							"protocol": "https",
+							"host": [
+								"ty6fnbdobg",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductosValue GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://ty6fnbdobg.execute-api.us-east-1.amazonaws.com/dev/products/?keyword=salsa",
+							"protocol": "https",
+							"host": [
+								"ty6fnbdobg",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"products",
+								""
+							],
+							"query": [
+								{
+									"key": "barcode",
+									"value": "11111111",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "prueba",
+									"disabled": true
+								},
+								{
+									"key": "keyword",
+									"value": "salsa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto GET",
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "https://h9n2mu7v05.execute-api.us-east-1.amazonaws.com/dev/product",
 							"protocol": "https",

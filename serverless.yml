@@ -60,13 +60,31 @@ functions:
           path: product/{id} 
           method: get
           cors: true
+
+  getOneProductValue:
+    handler: handler.getOneProductValue
+    events:
+      - http:
+          path: products/ 
+          method: get
+          cors: true
+
   getAllProduct:
     handler: handler.getAllProduct 
     events:
      - http:
          path: product
          method: get
-         cors: true
+         cors:
+          origin: '*'
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+          allowCredentials: true
   updateProduct:
     handler: handler.updateProduct
     events:
